@@ -2,8 +2,8 @@
 
 ### MERN stack
 
-Mongoose
-ExpressJS
-CryptoJS
-JWT
-StripeAPI
+- Mongoose
+  ExpressJS
+  CryptoJS
+  JWT
+  StripeAPI
