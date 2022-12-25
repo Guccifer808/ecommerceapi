@@ -6,8 +6,8 @@ const User = require('../models/User');
 const CryptoJS = require('crypto-js');
 //JWT
 const jwt = require('jsonwebtoken');
-//Register
 
+//Register
 router.post('/register', async (req, res) => {
   const newUser = new User({
     username: req.body.username,
@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
     const savedUser = await newUser.save();
     res.status(201).json(savedUser); //201 - successfuly added
   } catch (err) {
-    response.status(500).json(err);
+    res.status(500).json(err);
   }
 });
 

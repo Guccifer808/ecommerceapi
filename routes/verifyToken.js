@@ -25,4 +25,15 @@ const verifyTokenAndAuth = (req, res, next) => {
     }
   });
 };
-module.exports = { verifyToken, verifyTokenAndAuth };
+// Veryfi isAdmin
+const verifyTokenAndAdmin = (req, res, next) => {
+  verifyToken(req, res, () => {
+    //check if its the same user or admin
+    if (req.user.isAdmin) {
+      next();
+    } else {
+      res.status(403).json('You are not allowed to access this!');
+    }
+  });
+};
+module.exports = { verifyToken, verifyTokenAndAuth, verifyTokenAndAdmin };
