@@ -16,6 +16,8 @@ const productRoute = require('./routes/product');
 const cartRoute = require('./routes/cart');
 //order routes
 const orderRoute = require('./routes/order');
+//CORS
+const cors = require('cors');
 
 // using library for mongoDB
 const mongoose = require('mongoose');
@@ -32,6 +34,7 @@ app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/carts', cartRoute);
 app.use('/api/orders', orderRoute);
+app.use(cors());
 
 app.listen(process.env.PORT || 5000, () => {
   console.log('running on 5000');
