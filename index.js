@@ -6,16 +6,18 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 
-//user routes
+//user route
 const userRoute = require('./routes/user');
-//user routes
+//user route
 const authRoute = require('./routes/auth');
-//product routes
+//product route
 const productRoute = require('./routes/product');
 //cart routes
 const cartRoute = require('./routes/cart');
-//order routes
+//order route
 const orderRoute = require('./routes/order');
+//stripe route
+const stripeRoute = require('./routes/stripe');
 //CORS
 const cors = require('cors');
 
@@ -28,13 +30,15 @@ mongoose
 
 // to accept POST JSON format
 app.use(express.json());
+//CORS
+app.use(cors());
 //using routes
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/carts', cartRoute);
 app.use('/api/orders', orderRoute);
-app.use(cors());
+app.use('/api/checkout', stripeRoute);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log('running on 5000');
