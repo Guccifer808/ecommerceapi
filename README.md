@@ -1,4 +1,9 @@
 # Backend for ecommerce project
 
-MERN stack
+### MERN stack
+
+Mongoose
+ExpressJS
 CryptoJS
+JWT
+StripeAPI
