@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     //looking for username
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ username: req.body.username }); /////////////
     //condition check
     !user && res.status(401).json('Wrong username!');
     // decrypt password
@@ -48,16 +48,16 @@ router.post('/login', async (req, res) => {
     //JWT
     const accessToken = jwt.sign(
       {
-        Id: user._id,
+        id: user._id,
         isAdmin: user.isAdmin,
       },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: '7d' } //token expires in 7days
+      { expiresIn: '1d' } //token expires in 1day
     );
     // protecting password hash
-    const { password, ...other } = user._doc;
+    const { password, ...others } = user._doc;
     // if success
-    res.status(200).json({ ...other, accessToken });
+    res.status(200).json({ ...others, accessToken });
   } catch (err) {
     res.status(500).json(err);
   }
